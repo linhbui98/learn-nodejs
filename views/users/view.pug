@@ -1,6 +1,16 @@
-h1 View User
+extends ../layout/common
 
-p
-    b Name
-    span &nbsp
-    span= user.name
+block content
+    h1.mb-5 View User
+
+    table.table
+        thead
+            tr
+                th.text-primary Name
+                th.text-primary Phone
+        tbody
+            tr 
+                td
+                    spantext-primary= user.name
+                td 
+                    span= user.phone

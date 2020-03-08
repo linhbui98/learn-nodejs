@@ -1,14 +1,33 @@
-h1 Users List
+extends ../layout/common
 
-a(href="/users/create") New User
+block content
+    h1 Users List
+    
+    .d-flex.align-items-center
+        a.btn.btn-primary.mb-3(href="/users/create") New User
 
-form(action="/users/search", method="GET")
-    input(type="text", name="q")
-    button Search
+        form.ml-auto(action="/users/search", method="GET", class="d-flex")
+            input(type="text", name="q", class="form-control")
+            button(class="btn btn-primary ml-2") Search
 
-ul 
-    each user in users
-        li
-            span= user.name 
-            span &nbsp
-            a(href="/users/" + user.id) View
+    table.table
+        thead
+            tr
+                th Name
+                th Phone
+                th View
+                th Edit
+                th Delete
+        tbody 
+            each user in users
+                tr
+                    td
+                        span= user.name 
+                    td
+                        span= user.phone
+                    td 
+                        a.btn.btn-primary(href="/users/" + user.id) View
+                    td 
+                        btn.btn.btn-success Edit
+                    td 
+                        btn.btn.btn-danger Delete
