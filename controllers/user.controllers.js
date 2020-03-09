@@ -19,7 +19,6 @@ module.exports.create = (req, res) => {
 }
 
 module.exports.get = (req, res) => {
-    console.log(res.locals)
     const id = req.params.id
     const user = db.get('users').find({id: id}).value()
     res.render('users/view', {
@@ -29,7 +28,6 @@ module.exports.get = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
     req.body.id = shortid.generate()
-    console.log(res.locals)
     db.get('users').push(req.body).write()
 
     res.redirect("/users")
